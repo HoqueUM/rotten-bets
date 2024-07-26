@@ -30,12 +30,15 @@ export default function FormatOutput() {
         total_ratings: 0,
         total_reviews: 0
     });
+    const [loading, setLoading] = useState(true);
     const [timer, setTimer] = useState(120); 
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             const data = await getProps();
             setData(data);
+            setLoading(false);
         };
         fetchData();
         const interval = setInterval(fetchData, 120000); 
@@ -49,22 +52,31 @@ export default function FormatOutput() {
         return () => clearInterval(countdown); 
     }, []);
 
+    if (loading) {
+        return (
+            <div className='flex justify-center items-center h-screen'>
+                <div className='text-4xl'>Loading...</div>
+            </div>
+        );
+    }
+
     return (
         <div className='relative'>
             <div className='absolute z-50 top-0 left-0 p-4 text-lg'>Next update in: {timer} seconds</div>
             <div className='flex justify-center items-center flex-col p-4 mt-12 overflow-auto' style={{ maxHeight: 'calc(100vh - 5rem)' }}>
                 <p className='text-6xl font-bold'>{data.title}</p>
-                <div className='flex flex-row gap-10'>
+                <div className='flex flex-row gap-16 p-4'>
                     <div className='flex justify-center items-center'>
                         <div className='text-4xl'>{data.percent_score}%</div>
                     </div>
-                    <div className='flex flex-col justify-center items-center'>
+                    <div className='flex flex-col justify-center items-center space-y-2'>
                         <p className='text-2xl'>({data.actual_score})</p>
-                        <div className=''>On {data.actual_count} Reviews</div>
+                        <div className='text-lg'>On {data.actual_count} Reviews</div>
                     </div>
                 </div>
                 <div className='flex flex-row gap-4'>
-                    <p className=''>{data.num_liked} Positive {data.num_disliked} Negative</p>                </div>
+                    <p className='text-xl'>{data.num_liked} Positive {data.num_disliked} Negative</p>                
+                </div>
             </div>
         </div>
     );
