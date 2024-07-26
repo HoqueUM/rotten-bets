@@ -75,7 +75,7 @@ export default function FormatOutput() {
                     </div>
                 </div>
                 <div className='flex flex-row gap-4'>
-                    <p className='text-xl'>{data.num_liked} Positive {data.num_disliked} Negative</p>                
+                    <p className='text-xl'>{data.num_liked} Fresh {data.num_disliked} Rotten</p>                
                 </div>
             </div>
         </div>
