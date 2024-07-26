@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import ItemCard from '@/components/model/ItemCard';
 
 async function getProps() {
-    const url = `https://rotten-bets-backend.onrender.com/scores`;
+    const url = `https://rotten-bets-backend.onrender.com/current`;
     console.log(url);
     const res = await fetch(url);
     const data = await res.json();
@@ -12,12 +11,25 @@ async function getProps() {
 
 export default function FormatOutput() {
     type Movie = {
-        id: number;
+        actual_count: number;
+        actual_score: number;
+        num_disliked: number;
+        num_liked: number;
+        percent_score: number;
         title: string;
-        image: string;
-        percent: string;
+        total_ratings: number;
+        total_reviews: number;
     }
-    const [data, setData] = useState<Movie[]>([]);
+    const [data, setData] = useState<Movie>({
+        actual_count: 0,
+        actual_score: 0,
+        num_disliked: 0,
+        num_liked: 0,
+        percent_score: 0,
+        title: '',
+        total_ratings: 0,
+        total_reviews: 0
+    });
     const [timer, setTimer] = useState(120); 
 
     useEffect(() => {
@@ -38,11 +50,22 @@ export default function FormatOutput() {
     }, []);
 
     return (
-        <div>
-            <div>Next update in: {timer} seconds</div>
-            {data.map((data) => (
-                <ItemCard key={data.id} image={data.image} title={data.title} score={data.percent} />
-            ))}
+        <div className='relative'>
+            <div className='absolute z-50 top-0 left-0 p-4 text-lg'>Next update in: {timer} seconds</div>
+            <div className='flex justify-center items-center flex-col p-4 mt-12 overflow-auto' style={{ maxHeight: 'calc(100vh - 5rem)' }}>
+                <p className='text-6xl font-bold'>{data.title}</p>
+                <div className='flex flex-row gap-10'>
+                    <div className='flex justify-center items-center'>
+                        <div className='text-4xl'>{data.percent_score}%</div>
+                    </div>
+                    <div className='flex flex-col justify-center items-center'>
+                        <p className='text-2xl'>({data.actual_score})</p>
+                        <div className=''>On {data.actual_count} Reviews</div>
+                    </div>
+                </div>
+                <div className='flex flex-row gap-4'>
+                    <p className=''>{data.num_liked} Positive {data.num_disliked} Negative</p>                </div>
+            </div>
         </div>
     );
 }
