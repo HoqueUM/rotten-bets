@@ -19,6 +19,10 @@ export default function FormatOutput() {
         title: string;
         total_ratings: number;
         total_reviews: number;
+        liked: number;
+        disliked: number;
+        high: number;
+        low: number;
     }
     const [data, setData] = useState<Movie>({
         actual_count: 0,
@@ -28,7 +32,11 @@ export default function FormatOutput() {
         percent_score: 0,
         title: '',
         total_ratings: 0,
-        total_reviews: 0
+        total_reviews: 0,
+        high: 0,
+        low: 0,
+        liked: 0,
+        disliked: 0
     });
     const [loading, setLoading] = useState(true);
     const [timer, setTimer] = useState(120); 
@@ -76,6 +84,12 @@ export default function FormatOutput() {
                 </div>
                 <div className='flex flex-row gap-4'>
                     <p className='text-xl'>{data.num_liked} Fresh {data.num_disliked} Rotten</p>                
+                </div>
+                <div className='flex flex-col gap-4 justify-center items-center'>
+                    <br />
+                    <p className='font-bold'>Relevant Kalshi tickers:</p>
+                    <p>{data.liked} review(s) to get to {data.high}%</p>
+                    <p>{data.disliked} review(s) to get to {data.low}%</p>
                 </div>
             </div>
         </div>
