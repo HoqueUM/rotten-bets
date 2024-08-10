@@ -88,7 +88,7 @@ export default function FormatOutput() {
                 <div className='flex flex-col gap-4 justify-center items-center'>
                     <br />
                     <p className='font-bold'>Relevant Kalshi tickers:</p>
-                    <p>{data.liked} review(s) to get to {data.high}%</p>
+                    <p>{data.liked} review(s) to get above {data.high}%</p>
                     <p>{data.disliked} review(s) to get to {data.low}%</p>
                 </div>
             </div>
