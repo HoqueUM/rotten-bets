@@ -87,9 +87,9 @@ export default function FormatOutput() {
                 </div>
                 <div className='flex flex-col gap-4 justify-center items-center'>
                     <br />
-                    <p className='font-bold'>Relevant Kalshi tickers:</p>
-                    <p>{data.liked} review(s) to get above {data.high}%</p>
-                    <p>{data.disliked} review(s) to get to {data.low}%</p>
+                    <p className='font-bold'>Relevant Kalshi strikes:</p>
+                    <p>{data.liked} fresh(es) to get above {data.high}%</p>
+                    <p>{data.disliked} rot(s) to get to {data.low}%</p>
                 </div>
             </div>
         </div>
