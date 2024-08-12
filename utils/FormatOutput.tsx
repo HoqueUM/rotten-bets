@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import TimeSeriesChart from '@/components/model/Chart';
 
 async function getProps() {
     const url = `https://rotten-bets-backend.onrender.com/current`;
@@ -10,6 +11,11 @@ async function getProps() {
 }
 
 export default function FormatOutput() {
+    interface timestamp {
+        time: string;
+        score: number;
+    }
+
     type Movie = {
         actual_count: number;
         actual_score: number;
@@ -23,6 +29,7 @@ export default function FormatOutput() {
         disliked: number;
         high: number;
         low: number;
+        timestamps: timestamp[];
     }
     const [data, setData] = useState<Movie>({
         actual_count: 0,
@@ -36,7 +43,8 @@ export default function FormatOutput() {
         high: 0,
         low: 0,
         liked: 0,
-        disliked: 0
+        disliked: 0,
+        timestamps: [],
     });
     const [loading, setLoading] = useState(true);
     const [timer, setTimer] = useState(120); 
@@ -70,8 +78,8 @@ export default function FormatOutput() {
 
     return (
         <div className='relative'>
-            <div className='absolute z-50 top-0 left-0 p-4 text-lg'>Next update in: {timer} seconds</div>
             <div className='flex justify-center items-center flex-col p-4 mt-12 overflow-auto' style={{ maxHeight: 'calc(100vh - 5rem)' }}>
+                <div className='absolute z-50 top-0 left-0 p-4 text-lg'>Next update in: {timer} seconds</div>
                 <p className='text-6xl font-bold'>{data.title}</p>
                 <div className='flex flex-row gap-16 p-4'>
                     <div className='flex justify-center items-center'>
@@ -91,6 +99,7 @@ export default function FormatOutput() {
                     <p>{data.liked} fresh(es) to get above {data.high}%</p>
                     <p>{data.disliked} rot(s) to get to {data.low}%</p>
                 </div>
+                <TimeSeriesChart data={data.timestamps} />
             </div>
         </div>
     );
