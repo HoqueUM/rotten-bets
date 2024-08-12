@@ -95,11 +95,15 @@ export default function FormatOutput() {
                 </div>
                 <div className='flex flex-col gap-4 justify-center items-center'>
                     <br />
-                    <p className='font-bold'>Relevant Kalshi strikes:</p>
+                    <p className='font-bold'>Relevant Kalshi Strikes:</p>
                     <p>{data.liked} fresh(es) to get above {data.high}%</p>
                     <p>{data.disliked} rot(s) to get to {data.low}%</p>
                 </div>
-                <TimeSeriesChart data={data.timestamps} />
+                <br />
+                <div className='flex flex-col gap-4 justify-center items-center'>
+                    <p className='font-bold pb-4'>Score Graph:</p>
+                    <TimeSeriesChart data={data.timestamps} />
+                </div>
             </div>
         </div>
     );
