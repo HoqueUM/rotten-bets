@@ -9,7 +9,6 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
-      <p className="font-bold text-2xl"> Website is currently uncder construction. Apologies for any inconvenience.</p>
       <FormatOutput />
     </main>
   );
