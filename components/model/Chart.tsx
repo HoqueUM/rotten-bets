@@ -27,7 +27,7 @@ const TimeSeriesChart: React.FC<timestamps> = ({ data }) => {
     const interval = Math.ceil(10 / maxTicks);
 
     return (
-        <div className="fixed w-full h-64 sm:h-96 lg:w-[500px] lg:h-[300px] mx-auto">
+        <div className="absolute w-full h-64 sm:h-96 lg:w-[500px] lg:h-[300px] mx-auto">
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={data}>
                     <XAxis dataKey="time" interval={interval - 1} tick={false} />
