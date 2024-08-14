@@ -41,7 +41,7 @@ body {
   .chart-container {
       width: 100%;
       height: auto;
-      min-width: 300px; /* Set a minimum width */
-      min-height: 200px; /* Set a minimum height */
+      min-width: 300px;
+      min-height: 200px;
   }
 }
