@@ -100,8 +100,8 @@ export default function FormatOutput() {
                     <p>{data.disliked} rot(s) to get to {data.low}%</p>
                 </div>
                 <br />
+                <p className='font-bold pb-4'>Score Graph:</p>
                 <div className='flex flex-col gap-4 justify-center items-center w-1'>
-                    <p className='font-bold pb-4'>Score Graph:</p>
                     <TimeSeriesChart data={data.timestamps} />
                 </div>
             </div>
