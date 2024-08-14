@@ -79,7 +79,7 @@ export default function FormatOutput() {
     return (
         <div className='relative'>
             <div className='flex justify-center items-center flex-col p-4 mt-12 overflow-auto' style={{ maxHeight: 'calc(100vh - 5rem)' }}>
-                <div className='absolute z-50 top-0 left-0 p-4 text-lg'>Next update in: {timer} seconds</div>
+                <div className=' z-50 top-0 left-0 p-4 text-lg'>Next update in: {timer} seconds</div>
                 <p className='text-6xl font-bold'>{data.title}</p>
                 <div className='flex flex-row gap-16 p-4'>
                     <div className='flex justify-center items-center'>
