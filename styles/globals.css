@@ -31,3 +31,17 @@ body {
     text-wrap: balance;
   }
 }
+
+.chart-container {
+  width: 500px;
+  height: 300px;
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+      width: 100%;
+      height: auto;
+      min-width: 300px; /* Set a minimum width */
+      min-height: 200px; /* Set a minimum height */
+  }
+}
