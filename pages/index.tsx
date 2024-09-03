@@ -14,7 +14,6 @@ export default function Home() {
       <div className="h-screen">
         <FormatOutput />
       </div>
-      <Beetlejuice />
       <div className='pt-72'>
           <a href="https://tally.so/r/3NLBOO" target="_blank">
             <button className='btn btn-neutral btn-sm'>Suggest a feature</button>
