@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import FormatOutput from "@/utils/FormatOutput";
 import Beetlejuice from "@/utils/Beetljuice";
 import Form from "@/components/Form";
-
+import FormatOutput2 from "@/utils/FormatOutput2";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -13,6 +13,9 @@ export default function Home() {
     >
       <div className="h-screen">
         <FormatOutput />
+      </div>
+      <div className="h-screen">
+        <FormatOutput2 /> 
       </div>
       <div className='pt-72'>
           <a href="https://tally.so/r/3NLBOO" target="_blank">
